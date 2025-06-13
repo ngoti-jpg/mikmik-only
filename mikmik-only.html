@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Will You Go Out With Me?</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fce4ec;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #d81b60;
+      margin-bottom: 20px;
+    }
+
+    #gif {
+      width: 250px;
+      height: 250px;
+      margin: 20px auto;
+    }
+
+    button {
+      font-size: 1.2em;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #yesBtn {
+      background-color: #81c784;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #e57373;
+      color: white;
+    }
+
+    #message {
+      font-size: 1.2em;
+      color: #333;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Would you like to go out with me?</h1>
+
+  <div id="gif">
+    <img id="sadGif" src="" alt="" style="max-width: 100%; display: none;">
+  </div>
+
+  <button id="yesBtn" onclick="sayYes()">Yes</button>
+  <button id="noBtn" onclick="sayNo()">No</button>
+
+  <p id="message"></p>
+
+  <script>
+    const messages = [
+      "Sure ba?",
+      "Luh, bantay lang ka ba.",
+      "Kapag ako umiyak.",
+      "Ge kwento mo yan eh.",
+      "Unsa mani dong?",
+      "Demonyita talaga oh.",
+      "Eme ka bhe.",
+      "Dewag."
+    ];
+
+    const sadGifs = [
+      "https://media.giphy.com/media/l0Exk8EUzSLsrErEQ/giphy.gif",
+      "https://media.giphy.com/media/3og0IPxMM0erATueVW/giphy.gif",
+      "https://media.giphy.com/media/VbnUQpnihPSIgIXuZv/giphy.gif",
+      "https://media.giphy.com/media/3o6ZtpxSZbQRRnwCKQ/giphy.gif",
+      "https://media.giphy.com/media/xUOwGchzgwC3l5vH5a/giphy.gif",
+      "https://media.giphy.com/media/3orieV9D3XfllxZWLu/giphy.gif",
+      "https://media.giphy.com/media/jnQYWQWha1dW1QmTSY/giphy.gif",
+      "https://media.giphy.com/media/l41lI4bYmcsPJX9Go/giphy.gif"
+    ];
+
+    let noClickCount = 0;
+
+    function sayYes() {
+      document.querySelector('h1').innerText = "Yay! See you soon 💖";
+      document.getElementById("yesBtn").style.display = "none";
+      document.getElementById("noBtn").style.display = "none";
+      document.getElementById("message").innerText = "🥹 Thank you for saying yes!";
+      document.getElementById("sadGif").style.display = "none";
+    }
+
+    function sayNo() {
+      if (noClickCount < messages.length) {
+        document.getElementById("message").innerText = messages[noClickCount];
+        document.getElementById("sadGif").src = sadGifs[noClickCount];
+        document.getElementById("sadGif").style.display = "block";
+        noClickCount++;
+      } else {
+        document.getElementById("message").innerText = "No ka parin? 🥲";
+      }
+    }
+  </script>
+</body>
+</html>
